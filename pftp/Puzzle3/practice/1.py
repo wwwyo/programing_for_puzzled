@@ -169,8 +169,11 @@ def ComputerAssistant():
         number = int(input('Please give random number' +
                                ' of at least 6 digits:'))
     for i in range(5):
-        number = number * (i + 1) // (i + 2)
-        n = number % 52
+        while True:
+            number = number * (i + 1) // (i + 2)
+            n = number % 52
+            if cind.count(n) <= 0:
+                break
         cards.append(deck[n])
         cind.append(n)
         cardsuits.append(n % 4)
@@ -204,6 +207,5 @@ def ComputerAssistant():
 
     return
 
+
 ComputerAssistant()
-
-

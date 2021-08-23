@@ -5,12 +5,13 @@
 
 #Deck is are a list of strings, each string is a card
 #The order of cards in the list matters.
-deck = ['A_C', 'A_D', 'A_H', 'A_S', '2_C', '2_D', '2_H', '2_S', '3_C', '3_D', '3_H', '3_S',
-        '4_C', '4_D', '4_H', '4_S', '5_C', '5_D', '5_H', '5_S', '6_C', '6_D', '6_H', '6_S',
-        '7_C', '7_D', '7_H', '7_S', '8_C', '8_D', '8_H', '8_S', '9_C', '9_D', '9_H', '9_S',
-        '10_C', '10_D', '10_H', '10_S', 'J_C', 'J_D', 'J_H', 'J_S',
-        'Q_C', 'Q_D', 'Q_H', 'Q_S', 'K_C', 'K_D', 'K_H', 'K_S']
-         
+deck = ['A_C', '2_C', '3_C', '4_C', '5_C', '6_C', '7_C', '8_C', '9_C', '10_C', 'J_C', 'Q_C', 'K_C', 'A_D', '2_D', '3_D', '4_D', '5_D', '6_D', '7_D', '8_D', '9_D', '10_D', 'J_D', 'Q_D', 'K_D', 'A_H', '2_H', '3_H', '4_H', '5_H', '6_H', '7_H', '8_H', '9_H', '10_H', 'J_H', 'Q_H', 'K_H', 'A_S', '2_S', '3_S', '4_S', '5_S', '6_S', '7_S', '8_S', '9_S', '10_S', 'J_S', 'Q_S', 'K_S']
+# deck = []
+# for s in ['C', 'D', 'H', 'S']:
+#     for alph in ['A', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', ]:
+#         deck.append(alph + '_' +  s)
+# print(deck)
+
 #Given 5 cards, Assistant hides an appropriate card
 #He/she reads out the remaining four cards after choosing their order carefully!
 def AssistantOrdersCards():
@@ -109,7 +110,7 @@ def sortList(tlist):
     for index in range(0, len(tlist)-1):
         ismall = index
         for i in range(index, len(tlist)):
-            if tlist[ismall] > tlist[i]:
+            if tlist[ismall] % 13 > tlist[i] % 13:
                 ismall = i
         tlist[index], tlist[ismall] = tlist[ismall], tlist[index]
     
@@ -173,14 +174,14 @@ def ComputerAssistant():
         n = number % 52
         cards.append(deck[n])
         cind.append(n)
-        cardsuits.append(n % 4)
-        cnumbers.append(n // 4)
-        numsuits[n % 4] += 1
-        if numsuits[n % 4] > 1:
-            pairsuit = n % 4
+        cardsuits.append(n // 13)
+        cnumbers.append(n % 13)
+        numsuits[n // 13] += 1
+        if numsuits[n // 13] > 1:
+            pairsuit = n // 13
             
 ##    #Just for debugging
-    print (cards)
+    # print (cards)
     cardh = []
     for i in range(5):
         if cardsuits[i] == pairsuit:
@@ -204,6 +205,6 @@ def ComputerAssistant():
 
     return
 
+
+
 ComputerAssistant()
-
-

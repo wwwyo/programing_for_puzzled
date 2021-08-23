@@ -165,11 +165,12 @@ def ComputerAssistant():
     cards, cind, cardsuits, cnumbers = [], [], [], []
     numsuits = [0, 0, 0, 0]
     number = 0
+    pairsuits = []
     while number < 99999:
         number = int(input('Please give random number' +
                                ' of at least 6 digits:'))
-    for i in range(5):
-        number = number * (i + 1) // (i + 2)
+    for i in [2, 50, 9, 25, 48]:
+        number = i
         n = number % 52
         cards.append(deck[n])
         cind.append(n)
@@ -177,10 +178,32 @@ def ComputerAssistant():
         cnumbers.append(n // 4)
         numsuits[n % 4] += 1
         if numsuits[n % 4] > 1:
-            pairsuit = n % 4
-            
+            pairsuits.append(n % 4)
+
 ##    #Just for debugging
-    print (cards)
+    # print (cards)
+    cardh = []
+    if len(pairsuits) == 2:
+        calcParams = {pairsuits[0]: [], pairsuits[1]: []}
+        for i in range(5):
+            if cardsuits[i] == pairsuits[0]:
+                calcParams[pairsuits[0]].append(cnumbers[i])
+            elif cardsuits[i] == pairsuits[1]:
+                calcParams[pairsuits[1]].append(cnumbers[i])
+        for suit, cnums in calcParams.items():
+            minNum = 13
+            for i in cnums:
+                for j in cnums:
+                    if i - j != 0:
+                        minNum = min(minNum, (i - j) % 13)
+            calcParams[suit] = minNum
+        if list(calcParams.values())[0] > list(calcParams.values())[1]:
+            pairsuit = pairsuits[1]
+        else:
+            pairsuit = pairsuits[0]
+    else:
+        pairsuit = pairsuits[0]
+
     cardh = []
     for i in range(5):
         if cardsuits[i] == pairsuit:
@@ -204,6 +227,5 @@ def ComputerAssistant():
 
     return
 
+
 ComputerAssistant()
-
-
