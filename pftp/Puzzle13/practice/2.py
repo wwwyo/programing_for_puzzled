@@ -24,24 +24,24 @@ def pivotPartitionClever(lst, start, end):
         while not done:
             #Move rightward from left searching for element > pivot
             bottom += 1 
+            moves += 1
             if bottom == top: 
                 done = True 
                 break
             if lst[bottom] > pivot: 
                 lst[top] = lst[bottom]
-                moves += 1
                 #print (lst, 'bottom =', bottom, 'top = ', top)
                 break 
 
         while not done:
             #Move leftward from right searching for element < pivot
             top -= 1
+            moves += 1
             if top == bottom: 
                 done = True 
                 break
             if lst[top] < pivot: 
                 lst[bottom] = lst[top]
-                moves += 1
                 #print (lst, 'bottom =', bottom, 'top = ', top)
                 break 
 
@@ -59,7 +59,7 @@ def quicksort(lst, start, end):
         moves += quicksort(lst, split + 1, end)
     return moves
     
-a = [4, 65, 2, -31, 0, 99, 83, 782, 1]
+# a = [4, 65, 2, -31, 0, 99, 83, 782, 1]
 # print ('Initial list is:', a)
 # print ('Moves = :', quicksort(a, 0, len(a) - 1))
 # print ('Sorted list is:', a)
@@ -69,10 +69,10 @@ a = [4, 65, 2, -31, 0, 99, 83, 782, 1]
 # print ('Moves = :', quicksort(L, 0, len(L) - 1))
 # print ('Sorted list is:', L)
 
-# D = list(range(99, -1, -1))
-# print ('Initial list is:', D)
-# print ('Moves = :', quicksort(D, 0, len(D) - 1))
-# print ('Sorted list is:', D)
+D = list(range(99, -1, -1))
+print ('Initial list is:', D)
+print ('Moves = :', quicksort(D, 0, len(D) - 1))
+print ('Sorted list is:', D)
 
 R = [0] * 100
 R[0] = 29
