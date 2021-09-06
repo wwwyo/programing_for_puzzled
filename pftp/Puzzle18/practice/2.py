@@ -21,9 +21,10 @@ def coins(row, table):
     #Recursive calls: pick the coin, skip the next.
     #                 Skip the coin.
     #Take the maximum and store the result
-    pick = coins(row[2:], table)[0] + row[0]
-    skip = coins(row[1:], table)[0]
-    result = max(pick, skip)
+    onePick = coins(row[2:], table)[0] + row[0]
+    twePick = coins(row[3:], table)[0] + row[0] + row[1]
+    skip = coins(row[2:], table)[0] + row[1]
+    result = max(onePick, twePick, skip)
     table[len(row)] = result
     
     return result, table
@@ -43,6 +44,12 @@ def traceback(row, table):
             select.append(row[i])
             #If i was selected i + 1 cannot be!
             i += 2
+        # elif (table[len(row)-i] == row[i]) or \
+        #     (table[len(row)-i] == table[len(row)-i-3] + row[i]):
+        #     select.append(row[i])
+        #     #If i was selected i + 1 cannot be!
+        #     i += 2
+            
         else:
             i += 1
             
@@ -105,7 +112,7 @@ def coinsMemoizeNoEx(row, memo):
         #Subproblem was not solved, need to solve it
         pick = coinsMemoizeNoEx(row[2:], memo)[0] + row[0]
         skip = coinsMemoizeNoEx(row[1:], memo)[0]
-        result = max(pick, skip)c
+        result = max(pick, skip)
         memo[len(row)] = result
         
         return (result, memo)
@@ -115,8 +122,8 @@ result, memo = coins(row, {})
 traceback(row, memo)
 result, memo = coinsMemoize(row, {})
 traceback(row, memo)
-result, memo = coinsIterative(row)
-traceback(row, memo)
+# result, memo = coinsIterative(row)
+# traceback(row, memo)
 result, memo = coinsMemoizeNoEx(row, {})
 traceback(row, memo)
 

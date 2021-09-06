@@ -75,12 +75,12 @@ def graphDegreeOfSeparation(graph):
     
     return maxDegree
 
-print('Distance between A and C is', degreesOfSeparationVertices(small, 'A', 'C'))
-print('Distance between C and F is', degreesOfSeparationVertices(small, 'C', 'F'))
+# print('Distance between A and C is', degreesOfSeparationVertices(small, 'A', 'C'))
+# print('Distance between C and F is', degreesOfSeparationVertices(small, 'C', 'F'))
 
-print('Distance between A and U is', degreesOfSeparationVertices(large, 'A', 'U'))
-print('Distance between B and Z is', degreesOfSeparationVertices(large, 'B', 'Z'))
-print('Distance between U and C is', degreesOfSeparationVertices(large, 'U', 'C'))
+# print('Distance between A and U is', degreesOfSeparationVertices(large, 'A', 'U'))
+# print('Distance between B and Z is', degreesOfSeparationVertices(large, 'B', 'Z'))
+# print('Distance between U and C is', degreesOfSeparationVertices(large, 'U', 'C'))
 
 graphDegreeOfSeparation(large)
 

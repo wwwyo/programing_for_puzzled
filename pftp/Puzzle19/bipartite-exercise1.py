@@ -11,22 +11,17 @@
 #from the start vertex. Write a procedure that determines whether a possibly
 #disconnected graph is bipartite or not.
 
-dgraph = { 'B': ['C'],
-           'C': ['B', 'D'],
-           'D': ['C', 'E', 'F'],
-           'E': ['D'],
-           'F': ['D', 'G', 'H', 'I'],
-           'G': ['F'],
-           'H': ['F'],
-           'I': ['F'],
-          'F1': ['D1', 'I1', 'G1', 'H1'],
-          'B1': ['C1'],
-          'D1': ['C1', 'E1', 'F1'],
-          'E1': ['D1'],
-          'H1': ['F1'],
-          'C1': ['D1', 'B1'],
-          'G1': ['F1'],
-          'I1': ['F1']}
+dgraph = {
+    'A': ['B'],
+    'B': ['A'],
+    'C': ['D'],
+    'D': ['C', 'E', 'F'],
+    'E': ['D'],
+    'F': ['D', 'G', 'H', 'I'],
+    'G': ['F'],
+    'H': ['F'],
+    'I': ['F'],
+}
 
 dgraph2 = {'F': ['D', 'I', 'G', 'H'],
            'B': ['C'],
