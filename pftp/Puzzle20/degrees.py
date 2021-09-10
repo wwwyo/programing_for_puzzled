@@ -47,7 +47,6 @@ def degreesOfSeparation(graph, start):
                     visited.add(next)
                     newfront.add(next)
         frontier = newfront
-        
     return degrees - 1
 
 degreesOfSeparation(small, 'A')
